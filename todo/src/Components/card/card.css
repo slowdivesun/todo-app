@@ -1,0 +1,7 @@
+.card-container{
+    min-width: 130px;
+    max-width: 130px;
+    height: 150px;
+    display: flex;
+    margin-right: 10px;
+}

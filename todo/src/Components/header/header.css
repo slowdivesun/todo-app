@@ -1,0 +1,6 @@
+.header-container{
+    margin-left: 5vw;
+    width: 60vw;
+    display: flex;
+    border-bottom: 1px solid black;
+}

@@ -1,0 +1,16 @@
+.older-container{
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    width: 90vw;
+    height: 30vh;
+    align-items: center;
+    flex-shrink: 0;
+    /* justify-content: center; */
+}
+
+.older-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

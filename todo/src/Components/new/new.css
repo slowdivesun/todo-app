@@ -1,0 +1,35 @@
+.new-wrapper{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.new-box{
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    width: calc(95vw - 122px);
+    height: 30vh;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.new-box::-webkit-scrollbar{
+    display: none;
+}
+
+.add-todo{
+    border: 0;
+    background-color: white;
+}
+
+.button-wrapper{
+    min-width: 100px;
+    display: flex;
+    border: 1px solid black;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 10px;
+}
