@@ -5,11 +5,12 @@ import './older.css'
 
 const Older = () => {
     let colors = [
+        "#CED859",
         "#B55F4D",
         "#A3A252",
         "#63A352",
         "#52A2A3",
-        "#52A2A3"
+        "#52A2A3",
     ]
     return (
         <div className='older-wrapper'>
