@@ -7,10 +7,12 @@ import Header from './Components/header/Header';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './routes/home/Home';
 import NewList from './routes/newList/NewList';
+import Topbar from './Components/topbar/Topbar';
 
 function App() {
   return (
     <div>
+      <Topbar />
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />

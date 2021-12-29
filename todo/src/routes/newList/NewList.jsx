@@ -1,18 +1,18 @@
 import './newlist.css'
-const { useState } = require("react");
+// const { useState } = require("react");
 
 
 const NewList = () => {
 
-    const [title, setTitle] = useState("");
+    // const [title, setTitle] = useState("");
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const newList = {
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const newList = {
 
-        }
+    //     }
 
-    }
+    // }
 
     return (
         <div>
