@@ -15,15 +15,15 @@ const New = () => {
             for (let i = 0; i < res.data.length; i++) {
                 const res2 = await axios.get("/list/" + res.data[i].id)
                 result.push({
-                    "list": res.data[0].list,
+                    "list": res.data[i].list,
                     "count": res2.data.length
                 })
             }
             setLists(result)
-            console.log(lists)
+            // console.log(lists)
         }
         fetchLists();
-    })
+    }, [])
     return (
         <div className="new-container">
             <div className="new-wrapper">
@@ -38,14 +38,9 @@ const New = () => {
                 <div className="new-box">
                     {
                         lists.map(e => {
-                            return <Card title={e.list} items={e.count} color={"cyan"} />
+                            return <Card title={e.list} items={e.count} color={'#' + Math.floor(Math.random() * 16777215).toString(16)} />
                         })
                     }
-                    <Card title={"hello"} items={8} color={"red"} />
-                    <Card title={"hello"} items={8} color={"red"} />
-                    <Card title={"hello"} items={8} color={"red"} />
-                    <Card title={"hello"} items={8} color={"red"} />
-                    <Card title={"hello"} items={8} color={"red"} />
                 </div>
             </div>
         </div>
