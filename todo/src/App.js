@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './routes/home/Home';
 import NewList from './routes/newList/NewList';
 import Topbar from './Components/topbar/Topbar';
+import Details from './routes/details/Details';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/list/post" element={<NewList />} />
+        </Routes>
+        <Routes>
+          <Route path="/list/:listId" element={<Details />} />
         </Routes>
       </Router>
 

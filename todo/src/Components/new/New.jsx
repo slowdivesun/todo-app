@@ -16,7 +16,8 @@ const New = () => {
                 const res2 = await axios.get("/list/" + res.data[i].id)
                 result.push({
                     "list": res.data[i].list,
-                    "count": res2.data.length
+                    "count": res2.data.length,
+                    "id": res.data[i].id
                 })
             }
             setLists(result)
@@ -38,7 +39,7 @@ const New = () => {
                 <div className="new-box">
                     {
                         lists.map(e => {
-                            return <Card title={e.list} items={e.count} color={'#' + Math.floor(Math.random() * 16777215).toString(16)} />
+                            return <Card title={e.list} items={e.count} id={e.id} color={'#' + Math.floor(Math.random() * 16777215).toString(16)} />
                         })
                     }
                 </div>
