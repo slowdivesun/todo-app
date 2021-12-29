@@ -31,8 +31,8 @@ const Details = () => {
             </div>
 
             <div className="wrap-collapsible">
-                <input id="collapsible" className="toggle" type="checkbox" />
-                <label htmlFor="collapsible" className="lbl-toggle">More Info</label>
+                <input id="collapsible-2" className="toggle" type="checkbox" />
+                <label htmlFor="collapsible-2" className="lbl-toggle">More Info</label>
                 <div className="collapsible-content">
                     <ul className="content-inner">
                         <li></li>
