@@ -4,4 +4,13 @@
     height: 150px;
     display: flex;
     margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.card-items{
+    position: absolute;
+    bottom: 0;
+    left: 3px;
 }
