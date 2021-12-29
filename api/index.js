@@ -72,3 +72,17 @@ app.post("/list/:id", (req, res) => {
         res.status(200).json(result);
     })
 })
+
+app.get("/list/:id", (req, res) => {
+    const { id } = req.params;
+    const { text } = req.body;
+    const query = `SELECT * FROM todos WHERE id=${id}`;
+    con.query(query, (err, result) => {
+        if (err) {
+            res.status(400).json("cant post")
+            throw (err)
+        };
+        console.log(result);
+        res.status(200).json(result);
+    })
+})
