@@ -15,6 +15,6 @@
     justify-content: center;
 }
 
-:-webkit-scrollbar{
-    display: none;
+.older-container::-webkit-scrollbar{
+    display:none;
 }
