@@ -15,9 +15,22 @@ const Details = () => {
         const getItems = async () => {
             const res = await axios.get("/list/" + id);
             console.log(res)
+            let com = []
+            let incom = []
+            for (let i = 0; i < res.data.length; i++) {
+                if (res.data[i].status === 0) {
+                    incom.push(res.data[i])
+                }
+                else {
+                    com.push(res.data[i])
+                }
+            }
+            setComplete(com)
+            setIncomplete(incom)
+            console.log(com, incom)
         }
         getItems();
-    })
+    }, [])
 
     const handleSubmit = async (e) => {
         try {
@@ -43,7 +56,9 @@ const Details = () => {
                 <label htmlFor="collapsible" className="lbl-toggle">More Info</label>
                 <div className="collapsible-content">
                     <ul className="content-inner">
-                        <li></li>
+                        {incomplete.map(e => {
+                            return <li>{e.todo}</li>
+                        })}
                     </ul>
                 </div>
             </div>
