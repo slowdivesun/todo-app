@@ -9,6 +9,7 @@ const Details = () => {
 
     const [complete, setComplete] = useState([]);
     const [incomplete, setIncomplete] = useState([]);
+    const [item, setItem] = useState("");
 
     useEffect(() => {
         const getItems = async () => {
@@ -18,8 +19,25 @@ const Details = () => {
         getItems();
     })
 
+    const handleSubmit = async (e) => {
+        try {
+            await axios.post(`/list/new/${id}`, {
+                text: item,
+            })
+            window.location.reload()
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <div>
+            <form className="item-container" onSubmit={handleSubmit}>
+                <label htmlFor="item">Enter Name</label>
+                <input type="text" id="item" onChange={(e) => setItem(e.target.value)} />
+                <button type='submit'>Submit</button>
+            </form>
+
             <div className="wrap-collapsible">
                 <input id="collapsible" className="toggle" type="checkbox" />
                 <label htmlFor="collapsible" className="lbl-toggle">More Info</label>

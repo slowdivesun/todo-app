@@ -31,7 +31,7 @@ initializeDBAndServer();
 
 // app.use("/api/list", listRoute)
 
-app.post("/list", async (req, res) => {
+app.post("/api/list", async (req, res) => {
     const listDetails = req.body;
     const { listName } = listDetails;
     const query = `INSERT INTO lists(list) VALUES('${listName}')`;
@@ -46,7 +46,7 @@ app.post("/list", async (req, res) => {
 
 })
 
-app.get("/list", (req, res) => {
+app.get("/api/list", (req, res) => {
     const query = `SELECT * FROM lists`;
     con.query(query, (err, result) => {
         if (err) {
@@ -59,7 +59,7 @@ app.get("/list", (req, res) => {
 })
 
 
-app.post("/list/:id", (req, res) => {
+app.post("/api/list/new/:id", (req, res) => {
     const { id } = req.params;
     const { text } = req.body;
     const query = `INSERT INTO todos(id,todo,status) VALUES(${id}, '${text}', ${0})`;
@@ -73,7 +73,7 @@ app.post("/list/:id", (req, res) => {
     })
 })
 
-app.get("/list/:id", (req, res) => {
+app.get("/api/list/:id", (req, res) => {
     const { id } = req.params;
     const { text } = req.body;
     const query = `SELECT * FROM todos WHERE id=${id}`;
