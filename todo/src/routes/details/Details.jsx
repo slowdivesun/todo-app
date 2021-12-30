@@ -43,8 +43,12 @@ const Details = () => {
         }
     }
 
+    const handleDone = () => {
+
+    }
+
     return (
-        <div>
+        <div className="det-container">
             <form className="item-container" onSubmit={handleSubmit}>
                 <label htmlFor="item">Enter Name</label>
                 <input type="text" id="item" onChange={(e) => setItem(e.target.value)} />
@@ -57,7 +61,10 @@ const Details = () => {
                 <div className="collapsible-content">
                     <ul className="content-inner">
                         {incomplete.map(e => {
-                            return <li>{e.todo}</li>
+                            return (<li>
+                                <p>{e.todo}</p>
+                                <button onClick={handleDone}>Mark done</button>
+                            </li>)
                         })}
                     </ul>
                 </div>
@@ -68,7 +75,12 @@ const Details = () => {
                 <label htmlFor="collapsible-2" className="lbl-toggle">More Info</label>
                 <div className="collapsible-content">
                     <ul className="content-inner">
-                        <li></li>
+                        {complete.map(e => {
+                            return (<li>
+                                <p>{e.todo}</p>
+                                <button>Mark done</button>
+                            </li>)
+                        })}
                     </ul>
                 </div>
             </div>

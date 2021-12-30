@@ -62,7 +62,11 @@ app.get("/api/list", (req, res) => {
 app.post("/api/list/new/:id", (req, res) => {
     const { id } = req.params;
     const { text } = req.body;
-    const query = `INSERT INTO todos(id,todo,status) VALUES(${id}, '${text}', ${0})`;
+    const query = `INSERT INTO todos(id,todo,status,item_id) 
+    VALUES(${1}, '${text}', ${0}, (CASE
+        WHEN 1 in (select id from (SELECT * FROM todos) AS td) THEN (SELECT item_id+1 FROM (select * from todos) AS td2 WHERE id=1 ORDER BY item_id DESC LIMIT 1)
+        ELSE 1
+    END ))`;
     con.query(query, (err, result) => {
         if (err) {
             res.status(400).json("cant post")

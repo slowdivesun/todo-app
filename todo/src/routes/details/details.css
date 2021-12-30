@@ -71,3 +71,24 @@ input[type='checkbox'] {
     border-bottom-left-radius: 0;
 }
   
+.det-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+}
+
+input{
+    margin: 30px 5px;
+}
+
+.wrap-collapsible{
+    width: 70vw;
+}
+
+li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
