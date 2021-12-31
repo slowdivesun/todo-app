@@ -48,15 +48,21 @@ const Details = () => {
 
     }
 
-    const handleDelete = async (e) => {
+    const handleDelete = async (i) => {
+        let id = i.item_id
         try {
-            await axios.delete(`/list/${id}`, {
-                listId: id
+            const res = await axios.delete(`/list/${i.item_id}`, {
+                data: {
+                    listId: i.id
+                }
             })
+            setComplete((complete.filter(e => e.item_id !== id)))
+            setIncomplete((incomplete.filter(e => e.item_id !== id)))
         } catch (err) {
             console.log(err)
         }
     }
+
 
     const handleClick = (e) => {
         console.log(e.target)
@@ -76,7 +82,7 @@ const Details = () => {
                 <div className="collapsible-content">
                     <ul className="content-inner">
                         {incomplete.map(e => {
-                            return (<Item item={e} />)
+                            return (<Item item={e} key={e.item_id} onDelete={handleDelete} />)
                         })}
                     </ul>
                 </div>
