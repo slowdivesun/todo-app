@@ -1,21 +1,21 @@
-const Item = (props) => {
-    const { item, onDelete, onDone } = props
+const ItemInc = (props) => {
+    const { item, onDelete, onUndone } = props
 
     const handle = () => {
         onDelete(item)
     }
 
-    const handleDone = () => {
-        onDone(item)
+    const handleUndone = () => {
+        onUndone(item)
     }
 
     return (<li>
         <p>{item.todo}</p>
         <div className="det-buttons">
-            <button className="det-done" onClick={handleDone}>Mark done</button>
+            <button className="det-done" onClick={handleUndone}>Mark not done</button>
             <button className="det-dlt" onClick={handle}>Delete</button>
         </div>
     </li>)
 }
 
-export default Item
+export default ItemInc

@@ -118,3 +118,17 @@ app.put("/api/list/done/:id", (req, res) => {
         res.status(200).json(result);
     })
 })
+
+app.put("/api/list/undone/:id", (req, res) => {
+    const { id } = req.params;
+    const { listId } = req.body;
+    const query = `UPDATE todos SET status=0 WHERE id=${listId} AND item_id=${id}`;
+    con.query(query, (err, result) => {
+        if (err) {
+            res.status(400).json("cant put")
+            console.log(err)
+        };
+        console.log(result);
+        res.status(200).json(result);
+    })
+})

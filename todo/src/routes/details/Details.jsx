@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom"
 import Item from "../../Components/Item/Item";
+import ItemInc from "../../Components/itemInc/ItemInc";
 import './details.css'
 
 const Details = () => {
@@ -15,7 +16,6 @@ const Details = () => {
     useEffect(() => {
         const getItems = async () => {
             const res = await axios.get("/list/" + id);
-            console.log(res)
             let com = []
             let incom = []
             for (let i = 0; i < res.data.length; i++) {
@@ -28,7 +28,6 @@ const Details = () => {
             }
             setComplete(com)
             setIncomplete(incom)
-            console.log(com, incom)
         }
         getItems();
     }, [])
@@ -45,16 +44,29 @@ const Details = () => {
     }
 
     const handleDone = async (i) => {
-        console.log("wjwbfjk")
         let id = i.item_id
         try {
             const res = await axios.put(`/list/done/${i.item_id}`, {
-
                 listId: i.id
-            }
-            )
-            setComplete((complete.filter(e => e.item_id !== id)))
-            setIncomplete((incomplete.push(i)))
+            })
+            setIncomplete(incomplete => incomplete.filter(e => e.item_id !== id))
+            setComplete(complete => [...complete, i])
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const handleUndone = async (i) => {
+        // console.log((complete.filter(e => e.item_id !== i.item_id)))
+        // console.log(incomplete.push((incomplete.map(e => e.item_id === i.item_id)[0])))
+        let id = i.item_id
+        try {
+            const res = await axios.put(`/list/undone/${i.item_id}`, {
+                listId: i.id
+
+            })
+            setComplete(complete => (complete.filter(e => e.item_id !== id)))
+            setIncomplete(incomplete => [...incomplete, i])
         } catch (err) {
             console.log(err)
         }
@@ -68,16 +80,11 @@ const Details = () => {
                     listId: i.id
                 }
             })
-            setComplete((complete.filter(e => e.item_id !== id)))
-            setIncomplete((incomplete.filter(e => e.item_id !== id)))
+            setComplete(complete => (complete.filter(e => e.item_id !== id)))
+            setIncomplete(incomplete => (incomplete.filter(e => e.item_id !== id)))
         } catch (err) {
             console.log(err)
         }
-    }
-
-
-    const handleClick = (e) => {
-        console.log(e.target)
     }
 
     return (
@@ -106,10 +113,7 @@ const Details = () => {
                 <div className="collapsible-content">
                     <ul className="content-inner">
                         {complete.map(e => {
-                            return (<li>
-                                <p>{e.todo}</p>
-                                <button>Mark done</button>
-                            </li>)
+                            return (<ItemInc item={e} key={e.item_id} onDelete={handleDelete} onUndone={handleUndone} />)
                         })}
                     </ul>
                 </div>
