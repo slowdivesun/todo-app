@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom"
+import Item from "../../Components/Item/Item";
 import './details.css'
 
 const Details = () => {
@@ -47,6 +48,20 @@ const Details = () => {
 
     }
 
+    const handleDelete = async (e) => {
+        try {
+            await axios.delete(`/list/${id}`, {
+                listId: id
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const handleClick = (e) => {
+        console.log(e.target)
+    }
+
     return (
         <div className="det-container">
             <form className="item-container" onSubmit={handleSubmit}>
@@ -61,13 +76,7 @@ const Details = () => {
                 <div className="collapsible-content">
                     <ul className="content-inner">
                         {incomplete.map(e => {
-                            return (<li>
-                                <p>{e.todo}</p>
-                                <div className="det-buttons">
-                                    <button onClick={handleDone}>Mark done</button>
-                                    <button className="det-dlt">Delete</button>
-                                </div>
-                            </li>)
+                            return (<Item item={e} />)
                         })}
                     </ul>
                 </div>

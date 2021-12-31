@@ -90,3 +90,17 @@ app.get("/api/list/:id", (req, res) => {
         res.status(200).json(result);
     })
 })
+
+app.delete("/api/list/:id", (req, res) => {
+    const { id } = req.params;
+    const { listId } = req.body;
+    const query = `DELETE FROM todos WHERE id=${listId} AND item_id=${id}`;
+    con.query(query, (err, result) => {
+        if (err) {
+            res.status(400).json("cant post")
+            console.log(err)
+        };
+        console.log(result);
+        res.status(200).json(result);
+    })
+})
