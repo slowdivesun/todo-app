@@ -63,7 +63,10 @@ const Details = () => {
                         {incomplete.map(e => {
                             return (<li>
                                 <p>{e.todo}</p>
-                                <button onClick={handleDone}>Mark done</button>
+                                <div className="det-buttons">
+                                    <button onClick={handleDone}>Mark done</button>
+                                    <button className="det-dlt">Delete</button>
+                                </div>
                             </li>)
                         })}
                     </ul>
