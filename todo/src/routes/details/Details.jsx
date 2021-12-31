@@ -44,8 +44,20 @@ const Details = () => {
         }
     }
 
-    const handleDone = () => {
+    const handleDone = async (i) => {
+        console.log("wjwbfjk")
+        let id = i.item_id
+        try {
+            const res = await axios.put(`/list/done/${i.item_id}`, {
 
+                listId: i.id
+            }
+            )
+            setComplete((complete.filter(e => e.item_id !== id)))
+            setIncomplete((incomplete.push(i)))
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     const handleDelete = async (i) => {
@@ -82,7 +94,7 @@ const Details = () => {
                 <div className="collapsible-content">
                     <ul className="content-inner">
                         {incomplete.map(e => {
-                            return (<Item item={e} key={e.item_id} onDelete={handleDelete} />)
+                            return (<Item item={e} key={e.item_id} onDelete={handleDelete} onDone={handleDone} />)
                         })}
                     </ul>
                 </div>
