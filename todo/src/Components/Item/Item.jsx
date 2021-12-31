@@ -10,7 +10,7 @@ const Item = (props) => {
     return (<li>
         <p>{item.todo}</p>
         <div className="det-buttons">
-            <button>Mark done</button>
+            <button className="det-done">Mark done</button>
             <button className="det-dlt" onClick={handle}>Delete</button>
         </div>
     </li>)

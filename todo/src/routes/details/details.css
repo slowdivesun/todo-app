@@ -94,7 +94,7 @@ li{
 }
 
 .det-dlt{
-    background-color: red;
+    background-color: rgb(228, 65, 65);
     border: 0;
     padding: 5px 10px;
     margin-left: 5px;
@@ -104,5 +104,19 @@ li{
 }
 
 .det-dlt:hover{
-    border: 2px solid red;
+    border: 2px solid rgb(192, 157, 157);
+}
+
+.det-done{
+    background-color: rgb(68, 223, 94);
+    border: 0;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    color: white;
+}
+
+.det-done:hover{
+    border: 2px solid rgb(136, 223, 157);
 }
