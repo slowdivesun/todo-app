@@ -33,6 +33,7 @@ const Details = () => {
     }, [])
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
             await axios.post(`/list/new/${id}`, {
                 text: item,
@@ -57,8 +58,6 @@ const Details = () => {
     }
 
     const handleUndone = async (i) => {
-        // console.log((complete.filter(e => e.item_id !== i.item_id)))
-        // console.log(incomplete.push((incomplete.map(e => e.item_id === i.item_id)[0])))
         let id = i.item_id
         try {
             const res = await axios.put(`/list/undone/${i.item_id}`, {
